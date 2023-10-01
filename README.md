@@ -1,6 +1,11 @@
-# Inscriptions online
-An online interface for creating inscriptions
-
+# Inscribe Markdown
+A fork of inscribe the plannet for markdown
 # How to try it
 
-https://inscribetheplanet.com/
+1. Clone the repo
+
+> git clone https://github.com/cypherpunklab/markdown-inscribe
+
+2.
+
+Open the `index.html` file in your browser

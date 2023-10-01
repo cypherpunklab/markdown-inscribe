@@ -6,7 +6,7 @@
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <title>Inscribe the planet</title>
+    <title>Inscribe Markdown</title>
     <style>
         * {
             box-sizing: border-box;
@@ -264,7 +264,7 @@
 </head>
 <body>
 
-<h1>Welcome to the online inscriber</h1>
+<h1>Inscribe Markdown</h1>
 <h2 class="safari_warning">This tool may not work in safari browser. If you are using that, consider switching.</h2>
 <div id="setup">
 
@@ -277,16 +277,14 @@
     <p>Please choose what you want to inscribe:</p>
 
     <ul>
-        <li>
+        <li style="display: none;">
             <a id="upload_file_nav" class="upload_file active" href="javascript:void(0);">files</a>
         </li>
-        <li>
+        <li style="display: none;">
             <a id="registration_nav" class="registration" href="javascript:void(0);">.sats domains</a>
         </li>
-        <li>
-            <a id="brc20_mint_nav" class="brc20_mint" href="javascript:void(0);">brc-20 mint</a>
-        </li>
-        <li class="nav-item">
+        
+        <li class="nav-item" style="display: none;">
             <a id="brc20_deploy_nav" class="brc20_deploy" href="javascript:void(0);">brc-20 deploy</a>
         </li>
     </ul>
@@ -303,6 +301,7 @@
                             .flac,
                             .mp3,
                             .wav,
+                            .md,
                             .apng,
                             .avif,
                             .gif,
@@ -319,7 +318,7 @@
                             .webm
                             " type="file" class="form" multiple>
 
-            <button style="margin-top: 15px;" id="bytes_checker" type="button" class="btn btn-outline-primary mb-3">
+            <button style="margin-top: 15px; display: none;" id="bytes_checker" type="button" class="btn btn-outline-primary mb-3">
                 Check if file(s) are inscribed already
             </button>
         </div>
@@ -439,9 +438,9 @@
 
         $('#padding').value = padding;
         $('.upload_file').onclick = showUploader;
-        $('.registration').onclick = showRegister;
-        $('.brc20_mint').onclick = showBrc20Mint;
-        $('.brc20_deploy').onclick = showBrc20Deploy;
+        // $('.registration').onclick = showRegister;
+        // $('.brc20_mint').onclick = showBrc20Mint;
+        // $('.brc20_deploy').onclick = showBrc20Deploy;
     };
 
     function showRegister() {
@@ -450,12 +449,12 @@
         files = [];
         $('#app-form').reset();
         $('.brc20_deploy_form').style.display = "none";
-        $('.brc20_mint_form').style.display = "none";
+        // $('.brc20_mint_form').style.display = "none";
         $('.file_form').style.display = "none";
         $('.dns_form').style.display = "block";
         $('.dns_checker').style.display = "inline";
         $('.dns').value = "";
-        document.getElementById('brc20_mint_nav').classList.remove('active');
+        // document.getElementById('brc20_mint_nav').classList.remove('active');
         document.getElementById('brc20_deploy_nav').classList.remove('active');
         document.getElementById('upload_file_nav').classList.remove('active');
         document.getElementById('registration_nav').classList.add('active');
@@ -467,11 +466,11 @@
         files = [];
         $('#app-form').reset();
         $('.brc20_deploy_form').style.display = "none";
-        $('.brc20_mint_form').style.display = "none";
+        // $('.brc20_mint_form').style.display = "none";
         $('.file_form').style.display = "block";
         $('.dns_form').style.display = "none";
         $('.dns_checker').style.display = "none";
-        document.getElementById('brc20_mint_nav').classList.remove('active');
+        // document.getElementById('brc20_mint_nav').classList.remove('active');
         document.getElementById('brc20_deploy_nav').classList.remove('active');
         document.getElementById('upload_file_nav').classList.add('active');
         document.getElementById('registration_nav').classList.remove('active');
@@ -483,33 +482,33 @@
         files = [];
         $('#app-form').reset();
         $('.brc20_deploy_form').style.display = "block";
-        $('.brc20_mint_form').style.display = "none";
+        // $('.brc20_mint_form').style.display = "none";
         $('.file_form').style.display = "none";
         $('.dns_form').style.display = "none";
         $('.dns_checker').style.display = "none";
         $('.registration').onclick = showRegister;
-        document.getElementById('brc20_mint_nav').classList.remove('active');
+        // document.getElementById('brc20_mint_nav').classList.remove('active');
         document.getElementById('brc20_deploy_nav').classList.add('active');
         document.getElementById('upload_file_nav').classList.remove('active');
         document.getElementById('registration_nav').classList.remove('active');
     }
 
-    function showBrc20Mint() {
-        $('#padding').value = '546';
-        padding = '546';
-        files = [];
-        $('#app-form').reset();
-        $('.brc20_deploy_form').style.display = "none";
-        $('.brc20_mint_form').style.display = "block";
-        $('.file_form').style.display = "none";
-        $('.dns_form').style.display = "none";
-        $('.dns_checker').style.display = "none";
-        $('.registration').onclick = showRegister;
-        document.getElementById('brc20_mint_nav').classList.add('active');
-        document.getElementById('brc20_deploy_nav').classList.remove('active');
-        document.getElementById('upload_file_nav').classList.remove('active');
-        document.getElementById('registration_nav').classList.remove('active');
-    }
+    // function showBrc20Mint() {
+    //     $('#padding').value = '546';
+    //     padding = '546';
+    //     files = [];
+    //     $('#app-form').reset();
+    //     $('.brc20_deploy_form').style.display = "none";
+    //     $('.brc20_mint_form').style.display = "block";
+    //     $('.file_form').style.display = "none";
+    //     $('.dns_form').style.display = "none";
+    //     $('.dns_checker').style.display = "none";
+    //     $('.registration').onclick = showRegister;
+    //     document.getElementById('brc20_mint_nav').classList.add('active');
+    //     document.getElementById('brc20_deploy_nav').classList.remove('active');
+    //     document.getElementById('upload_file_nav').classList.remove('active');
+    //     document.getElementById('registration_nav').classList.remove('active');
+    // }
 
     showUploader();
 
@@ -524,8 +523,9 @@
             let b64;
             let mimetype = this.files[i].type;
 
-            if (mimetype.includes("text/plain")) {
-
+            if (this.files[i].name.endsWith('.md')) {
+                mimetype = 'text/markdown;charset=utf-8';
+            } else if (mimetype.includes("text/plain")) {
                 mimetype += ";charset=utf-8";
             }
 
@@ -574,121 +574,121 @@
             return;
         }
 
-        if ($('.brc20_deploy_form').style.display != "none") {
+        // if ($('.brc20_deploy_form').style.display != "none") {
 
-            files = [];
+        //     files = [];
 
-            let deploy = '{ \n' +
-                '  "p": "brc-20",\n' +
-                '  "op": "deploy",\n' +
-                '  "tick": "",\n' +
-                '  "max": "",\n' +
-                '  "lim": ""\n' +
-                '}';
+        //     let deploy = '{ \n' +
+        //         '  "p": "brc-20",\n' +
+        //         '  "op": "deploy",\n' +
+        //         '  "tick": "",\n' +
+        //         '  "max": "",\n' +
+        //         '  "lim": ""\n' +
+        //         '}';
 
-            if (isNaN(parseInt($('#brc20-deploy-max').value))) {
-                alert('Invalid supply.');
-                return;
-            }
+        //     if (isNaN(parseInt($('#brc20-deploy-max').value))) {
+        //         alert('Invalid supply.');
+        //         return;
+        //     }
 
-            if (isNaN(parseInt($('#brc20-deploy-lim').value))) {
-                alert('Invalid limit.');
-                return;
-            }
+        //     if (isNaN(parseInt($('#brc20-deploy-lim').value))) {
+        //         alert('Invalid limit.');
+        //         return;
+        //     }
 
-            if ($('#brc20-deploy-ticker').value == '' || $('#brc20-deploy-ticker').value.length != 4) {
-                alert('Invalid ticker length. Must be 4 characters.');
-                return;
-            }
+        //     if ($('#brc20-deploy-ticker').value == '' || $('#brc20-deploy-ticker').value.length != 4) {
+        //         alert('Invalid ticker length. Must be 4 characters.');
+        //         return;
+        //     }
 
-            deploy = JSON.parse(deploy);
-            deploy.tick = $('#brc20-deploy-ticker').value;
-            deploy.max = $('#brc20-deploy-max').value;
-            deploy.lim = $('#brc20-deploy-lim').value;
+        //     deploy = JSON.parse(deploy);
+        //     deploy.tick = $('#brc20-deploy-ticker').value;
+        //     deploy.max = $('#brc20-deploy-max').value;
+        //     deploy.lim = $('#brc20-deploy-lim').value;
 
-            let mimetype = "text/plain;charset=utf-8";
-            files.push({name: deploy.tick, hex: textToHex(JSON.stringify(deploy)), mimetype: mimetype, sha256: ''});
+        //     let mimetype = "text/plain;charset=utf-8";
+        //     files.push({name: deploy.tick, hex: textToHex(JSON.stringify(deploy)), mimetype: mimetype, sha256: ''});
 
-            console.log(files);
-        }
+        //     console.log(files);
+        // }
 
-        if ($('.brc20_mint_form').style.display != "none") {
+        // if ($('.brc20_mint_form').style.display != "none") {
 
-            files = [];
+        //     files = [];
 
-            let mint = '{ \n' +
-                '  "p": "brc-20",\n' +
-                '  "op": "mint",\n' +
-                '  "tick": "",\n' +
-                '  "amt": ""\n' +
-                '}';
+        //     let mint = '{ \n' +
+        //         '  "p": "brc-20",\n' +
+        //         '  "op": "mint",\n' +
+        //         '  "tick": "",\n' +
+        //         '  "amt": ""\n' +
+        //         '}';
 
-            if (isNaN(parseInt($('#brc20-mint-amount').value))) {
-                alert('Invalid mint amount.');
-                return;
-            }
+        //     if (isNaN(parseInt($('#brc20-mint-amount').value))) {
+        //         alert('Invalid mint amount.');
+        //         return;
+        //     }
 
-            if ($('#brc20-mint-ticker').value == '' || $('#brc20-mint-ticker').value.length != 4) {
-                alert('Invalid ticker length. Must be 4 characters.');
-                return;
-            }
+        //     if ($('#brc20-mint-ticker').value == '' || $('#brc20-mint-ticker').value.length != 4) {
+        //         alert('Invalid ticker length. Must be 4 characters.');
+        //         return;
+        //     }
 
-            mint = JSON.parse(mint);
-            mint.tick = $('#brc20-mint-ticker').value;
-            mint.amt = $('#brc20-mint-amount').value;
+        //     mint = JSON.parse(mint);
+        //     mint.tick = $('#brc20-mint-ticker').value;
+        //     mint.amt = $('#brc20-mint-amount').value;
 
-            let repeat = parseInt($('#brc20-mint-repeat').value);
+        //     let repeat = parseInt($('#brc20-mint-repeat').value);
 
-            if (isNaN(repeat)) {
-                alert('Invalid repeat amount.');
-                return;
-            }
+        //     if (isNaN(repeat)) {
+        //         alert('Invalid repeat amount.');
+        //         return;
+        //     }
 
-            for (let i = 0; i < repeat; i++) {
-                let mimetype = "text/plain;charset=utf-8";
-                files.push({
-                    name: mint.tick + '_' + i,
-                    hex: textToHex(JSON.stringify(mint)),
-                    mimetype: mimetype,
-                    sha256: ''
-                });
-            }
+        //     for (let i = 0; i < repeat; i++) {
+        //         let mimetype = "text/plain;charset=utf-8";
+        //         files.push({
+        //             name: mint.tick + '_' + i,
+        //             hex: textToHex(JSON.stringify(mint)),
+        //             mimetype: mimetype,
+        //             sha256: ''
+        //         });
+        //     }
 
-            console.log(files);
-        }
+        //     console.log(files);
+        // }
 
-        if ($('.dns_form').style.display != "none") {
+        // if ($('.dns_form').style.display != "none") {
 
-            files = [];
+        //     files = [];
 
-            let sats_domains = $('.dns').value.split("\n");
-            let sats_domains_cleaned = [];
+        //     let sats_domains = $('.dns').value.split("\n");
+        //     let sats_domains_cleaned = [];
 
-            for (let sats_domain in sats_domains) {
+        //     for (let sats_domain in sats_domains) {
 
-                let domain = sats_domains[sats_domain].trim();
+        //         let domain = sats_domains[sats_domain].trim();
 
-                if (domain == '' || sats_domains_cleaned.includes(domain)) {
+        //         if (domain == '' || sats_domains_cleaned.includes(domain)) {
 
-                    continue;
-                }
+        //             continue;
+        //         }
 
-                sats_domains_cleaned.push(domain);
-            }
+        //         sats_domains_cleaned.push(domain);
+        //     }
 
-            for (let sats_domain in sats_domains_cleaned) {
+        //     for (let sats_domain in sats_domains_cleaned) {
 
-                let mimetype = "text/plain;charset=utf-8";
-                let domain = {"p": "sns", "op": "reg", "name": sats_domains_cleaned[sats_domain].trim()};
-                files.push({
-                    name: sats_domains_cleaned[sats_domain].trim(),
-                    hex: textToHex(JSON.stringify(domain)),
-                    mimetype: mimetype,
-                    sha256: ''
-                });
-                console.log(domain);
-            }
-        }
+        //         let mimetype = "text/plain;charset=utf-8";
+        //         let domain = {"p": "sns", "op": "reg", "name": sats_domains_cleaned[sats_domain].trim()};
+        //         files.push({
+        //             name: sats_domains_cleaned[sats_domain].trim(),
+        //             hex: textToHex(JSON.stringify(domain)),
+        //             mimetype: mimetype,
+        //             sha256: ''
+        //         });
+        //         console.log(domain);
+        //     }
+        // }
 
         if (files.length == 0) {
             alert('Nothing to inscribe. Please upload some files or use one of the additional options.');
